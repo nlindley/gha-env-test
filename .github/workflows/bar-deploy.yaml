@@ -1,0 +1,14 @@
+name: Bar Deploy
+
+on:
+  - workflow_dispatch
+
+jobs:
+  Foo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    environment: bar
+
+    steps:
+      - name: Check out repository code
+        run: echo "Deployed bar!"

@@ -1,0 +1,15 @@
+name: Foo Deploy
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Foo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    environment: foo
+
+    steps:
+      - name: Check out repository code
+        run: echo "Deployed foo!"
