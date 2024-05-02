@@ -5,11 +5,30 @@ on:
     branches:
       - main
 jobs:
-  Foo:
+  CI:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+
+    steps:
+      - name: Test
+        run: echo "Passed!"
+
+  Demo:
     runs-on: ubuntu-latest
     timeout-minutes: 1
     environment: foo
+    needs: CI
 
     steps:
       - name: Check out repository code
-        run: echo "Deployed foo!"
+        run: echo "Deployed demo!"
+
+  Prod:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    environment: bar
+    needs: CI
+
+    steps:
+      - name: Check out repository code
+        run: echo "Deployed prod!"
